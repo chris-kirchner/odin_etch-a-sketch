@@ -1,0 +1,25 @@
+#grid-container {
+  box-sizing: border-box;
+  width: 320px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.square {
+  height: 20px;
+  width: 20px;
+  /* box-sizing: border-box;
+  border: 1px solid rgb(197, 197, 197); */
+  font-size: 8px;
+  color: rgb(104, 104, 104);
+}
+
+.active:hover {
+  background-color: orange;
+  transition: background-color .05s;
+}
+
+.active {
+  background-color: rgb(209, 0, 0);
+  transition: background-color 1.3s;
+}
