@@ -1,3 +1,11 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
 #grid-container {
   border: 1px solid gray;
   width: 600px;
@@ -7,11 +15,9 @@
 }
 
 .active:hover {
-  background-color: orange;
   transition: background-color .05s;
 }
 
 .active {
-  background-color: rgb(209, 0, 0);
   transition: background-color 1.3s;
 }
