@@ -44,8 +44,6 @@ function squareSetup(lineCount) {
   squareEvent();
 };
 
-squareSetup(20);
-
 function squareEvent() {
   let squares = document.querySelectorAll(".square");
   squares.forEach(square => {
@@ -57,12 +55,12 @@ function squareEvent() {
     })
     square.addEventListener("mouseleave", () => {
       if (bgColor === "") {
-        square.style.backgroundColor = "rgb(255, 0, 0)";
+        square.style.backgroundColor = "rgb(200, 200, 200)";
       }
       else {
-        let colorChange = 20;
-        let regex = /\d+/g;
-        let rgbArr = bgColor.match(regex);
+        let colorChange = 25;
+        let numRegex = /\d+/g;
+        let rgbArr = bgColor.match(numRegex);
         for (let i = 0; i < rgbArr.length; i++) {
           parseInt(rgbArr[i]);
           if ((rgbArr[i] - colorChange) >= 0) {
@@ -72,11 +70,13 @@ function squareEvent() {
             rgbArr[i] = 0;
           }
         }
-        square.style.backgroundColor = "rgb("+rgbArr[0]+", "+rgbArr[1]+", "+rgbArr[2]+")";
+        square.style.backgroundColor = "rgb(" + rgbArr[0] + ", " + rgbArr[1] + ", " + rgbArr[2] + ")";
       }
     });
   });
 };
+
+squareSetup(30);
 
 // let regex = /\d+/g;
 // let str = "rgb(255,0,0)";
