@@ -8,11 +8,54 @@ body {
   background-image: radial-gradient(rgb(209, 192, 166), rgb(77, 72, 63));
 }
 
+#title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+
+#title-container > h1 {
+  font-size: 80px;
+  font-weight: 900;
+  margin: 0;
+  margin-bottom: 10px;
+  position: relative;
+  background-image: radial-gradient(#ffd900, #ff9900);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#title-container > h1:before {
+  content: "Let's Draw!";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  text-shadow: 
+    0px 1px rgb(177, 115, 0),
+    0px 2px rgb(177, 115, 0),
+    0px 3px rgb(177, 115, 0),
+    0px 4px rgb(177, 115, 0),
+    0px 5px rgb(177, 115, 0),
+    0px 6px rgb(177, 115, 0),
+    0px 7px rgb(177, 115, 0),
+    0px 30px 20px rgba(0, 0, 0, 30%);
+}
+
+#title-container > p {
+  font-size: 30px;
+  font-weight: 600;
+  margin: 0;
+}
+
 #body-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px;
+  margin-top: 20px;
 }
 
 button {
@@ -48,7 +91,7 @@ button:active {
   flex-wrap: wrap;
   background-color: rgb(231, 231, 231);
   box-shadow: 0px 80px 70px rgba(0, 0, 0, 20%);
-  border-image: linear-gradient(rgb(255, 174, 0), rgb(175, 79, 0)) 1;
+  border-image: linear-gradient(rgb(255, 174, 0), rgb(214, 96, 0)) 1;
 }
 
 /* #grid-container > div {
