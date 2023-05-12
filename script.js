@@ -76,7 +76,7 @@ function squareEvent() {
   });
 };
 
-squareSetup(30);
+squareSetup(50);
 
 // let regex = /\d+/g;
 // let str = "rgb(255,0,0)";
