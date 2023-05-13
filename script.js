@@ -1,8 +1,9 @@
 const gridContainer = document.getElementById("grid-container");
 const button = document.getElementById("button");
+const buttonReset = document.getElementById("button-reset");
 let gridContainerStyle = getComputedStyle(gridContainer);
 let gridWidth = parseInt(gridContainerStyle.width.replace(/\D/g, ""));
-// let lineCount = 50;
+let dimension = 50;
 let count = 0;
 
 function changeLineCount() {
@@ -18,7 +19,13 @@ function changeLineCount() {
   }
 };
 
+function gridReset() {
+  removeAllChildNodes(gridContainer);
+  squareSetup(dimension);
+};
+
 button.addEventListener("click", changeLineCount);
+buttonReset.addEventListener("click", gridReset);
 
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
@@ -27,6 +34,7 @@ function removeAllChildNodes(parent) {
 };
 
 function squareSetup(lineCount) {
+  dimension = parseInt(lineCount);
   const containerSize = gridWidth / lineCount;
   for (let i = 0; i < lineCount; i++) {
     for (let j = 0; j < lineCount; j++) {
@@ -76,7 +84,7 @@ function squareEvent() {
   });
 };
 
-squareSetup(50);
+squareSetup(dimension);
 
 // let regex = /\d+/g;
 // let str = "rgb(255,0,0)";
