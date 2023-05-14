@@ -3,55 +3,62 @@ const button = document.getElementById("button");
 const buttonReset = document.getElementById("button-reset");
 let gridContainerStyle = getComputedStyle(gridContainer);
 let gridWidth = parseInt(gridContainerStyle.width.replace(/\D/g, ""));
-let dimension = 50;
-let count = 0;
+let squaresPerLine = 50;
+// let count = 0;
 
+// Change number of squares per line based on user input
 function changeLineCount() {
-  lineCount = prompt("Number of squares per line (1 - 100):", "");
+  let lineCount = prompt("Number of squares per line (1 - 100):", "");
   if (lineCount > 0 && lineCount < 101) {
     removeAllChildNodes(gridContainer);
-    count = 0;
+    // count = 0;
     squareSetup(lineCount);
   }
   else {
     changeLineCount();
-    // alert("Please enter a number between 1 and 100");
   }
 };
 
+/* Removes all squares then sets up the same number of squares per line
+giving the effect of "erasing" the board */
 function gridReset() {
   removeAllChildNodes(gridContainer);
-  squareSetup(dimension);
+  squareSetup(squaresPerLine);
 };
 
 button.addEventListener("click", changeLineCount);
 buttonReset.addEventListener("click", gridReset);
 
+// Removes all children of a parent container
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
   }
 };
 
+/* Populates gridContainer with squares that scale to fit within
+the max width of the container */
 function squareSetup(lineCount) {
-  dimension = parseInt(lineCount);
+  squaresPerLine = parseInt(lineCount);
   const containerSize = gridWidth / lineCount;
   for (let i = 0; i < lineCount; i++) {
     for (let j = 0; j < lineCount; j++) {
-      count ++;
+      // count ++;
       const square = document.createElement("div");
       square.className += "square";
       square.style.height = containerSize + "px";
       square.style.width = containerSize + "px";
       gridContainer.appendChild(square);
       // square.innerText = count;
-      square.style.fontSize = "8px";
-      square.style.textAlign = "center";
+      // square.style.fontSize = "8px";
+      // square.style.textAlign = "center";
     }
   }
   squareEvent();
 };
 
+/* Handles mouse listener events and color values for the line
+created when moving the mouse over the grid */
 function squareEvent() {
   let squares = document.querySelectorAll(".square");
   squares.forEach(square => {
@@ -84,9 +91,4 @@ function squareEvent() {
   });
 };
 
-squareSetup(dimension);
-
-// let regex = /\d+/g;
-// let str = "rgb(255,0,0)";
-// let x = str.match(regex);
-// console.log(parseInt(x[1]));
+squareSetup(squaresPerLine);
