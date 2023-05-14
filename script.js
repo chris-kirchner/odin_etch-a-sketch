@@ -1,10 +1,17 @@
 const gridContainer = document.getElementById("grid-container");
 const button = document.getElementById("button");
 const buttonReset = document.getElementById("button-reset");
+const slider = document.getElementById("slider");
+const sliderValue = document.getElementById("slider-value");
 let gridContainerStyle = getComputedStyle(gridContainer);
 let gridWidth = parseInt(gridContainerStyle.width.replace(/\D/g, ""));
 let squaresPerLine = 50;
 // let count = 0;
+
+sliderValue.innerHTML = slider.value + "x" + slider.value;
+slider.oninput = function() {
+  sliderValue.innerHTML = this.value + "x" + this.value;
+};
 
 // Change number of squares per line based on user input
 function changeLineCount() {
