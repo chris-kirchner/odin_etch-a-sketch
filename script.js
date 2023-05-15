@@ -8,23 +8,35 @@ let gridWidth = parseInt(gridContainerStyle.width.replace(/\D/g, ""));
 let squaresPerLine = 50;
 // let count = 0;
 
-sliderValue.innerHTML = slider.value + "x" + slider.value;
+sliderValue.innerText = slider.value + " x " + slider.value;
 slider.oninput = function() {
-  sliderValue.innerHTML = this.value + "x" + this.value;
+  sliderValue.innerText = slider.value + " x " + slider.value;
 };
 
-// Change number of squares per line based on user input
-function changeLineCount() {
-  let lineCount = prompt("Number of squares per line (1 - 100):", "");
-  if (lineCount > 0 && lineCount < 101) {
+slider.addEventListener("mouseup", changeGridSizeSlider);
+slider.addEventListener("keyup", changeGridSizeSlider);
+function changeGridSizeSlider() {
+  let value = parseInt(slider.value);
+  if (value !== squaresPerLine) {
     removeAllChildNodes(gridContainer);
-    // count = 0;
-    squareSetup(lineCount);
-  }
-  else {
-    changeLineCount();
+    squareSetup(value);
   }
 };
+
+
+
+// Change number of squares per line based on user input
+// function changeLineCount() {
+//   let lineCount = prompt("Number of squares per line (1 - 100):", "");
+//   if (lineCount > 0 && lineCount < 101) {
+//     removeAllChildNodes(gridContainer);
+//     // count = 0;
+//     squareSetup(lineCount);
+//   }
+//   else {
+//     changeLineCount();
+//   }
+// };
 
 /* Removes all squares then sets up the same number of squares per line
 giving the effect of "erasing" the board */
@@ -33,7 +45,7 @@ function gridReset() {
   squareSetup(squaresPerLine);
 };
 
-button.addEventListener("click", changeLineCount);
+// button.addEventListener("click", changeLineCount);
 buttonReset.addEventListener("click", gridReset);
 
 // Removes all children of a parent container
