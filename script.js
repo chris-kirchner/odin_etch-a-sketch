@@ -23,8 +23,6 @@ function changeGridSizeSlider() {
   }
 };
 
-
-
 // Change number of squares per line based on user input
 // function changeLineCount() {
 //   let lineCount = prompt("Number of squares per line (1 - 100):", "");
