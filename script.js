@@ -9,12 +9,14 @@ let squaresPerLine = 50;
 // let count = 0;
 
 sliderValue.innerText = slider.value + " x " + slider.value;
-slider.oninput = function() {
+function changeSliderText() {
   sliderValue.innerText = slider.value + " x " + slider.value;
 };
 
+slider.addEventListener("input", changeSliderText);
 slider.addEventListener("mouseup", changeGridSizeSlider);
 slider.addEventListener("keyup", changeGridSizeSlider);
+
 function changeGridSizeSlider() {
   let value = parseInt(slider.value);
   if (value !== squaresPerLine) {
