@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 html {
   height: 100%;
@@ -20,20 +20,24 @@ body {
 }
 
 #title-container > h1 {
-  letter-spacing: 3px;
-  font-size: 100px;
+  font-family: 'Press Start 2P', sans-serif;
+  /* letter-spacing: 3px; */
+  word-spacing: -.5ch;
+  line-height: 1.1;
+  font-size: 80px;
   font-weight: 900;
   margin: 0;
   margin-bottom: 10px;
   position: relative;
-  background-image: radial-gradient(rgb(255, 217, 0) 30%, rgb(255, 153, 0));
+  background-image: radial-gradient(rgb(255, 217, 0) 40%, rgb(255, 153, 0));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 #title-container > h1:before {
-  content: "Let's Draw!";
+  line-height: 1.1;
+  content: "Pixel Pad";
   position: absolute;
   top: 0;
   left: 0;
@@ -46,7 +50,7 @@ body {
     0px 5px rgb(177, 115, 0),
     0px 6px rgb(177, 115, 0),
     0px 7px rgb(177, 115, 0),
-    0px 30px 30px rgba(0, 0, 0, 30%);
+    0px 50px 40px rgba(0, 0, 0, 30%);
 }
 
 #title-container > p {
@@ -69,16 +73,18 @@ body {
 
 #button-container {
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  width: 610px;
 }
 
 button {
   padding: 20px;
   margin-bottom: 20px;
-  border-radius: 10px;
-  border: 1px solid rgb(172, 92, 0);
+  /* border-radius: 10px; */
+  /* border: 1px solid rgb(172, 92, 0); */
+  border: none;
   background-color: rgb(255, 133, 0);
-  box-shadow: 0px 5px rgb(134, 72, 0);
+  /* box-shadow: 0px 5px rgb(134, 72, 0); */
   transition: background-color 0.5s;
   font-size: 20px;
   font-weight: bold;
@@ -98,7 +104,7 @@ button:active {
 }
 
 #slider-container {
-  width: 50%;
+  width: 40%;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -111,14 +117,14 @@ button:active {
   border-radius: 10px;
   background: rgb(216, 212, 204);
   outline: none;
-  opacity: 0.7;
+  /* opacity: 0.7; */
   -webkit-transition: 0.5s;
   transition: opacity 0.5s;
 }
 
-#slider-container > #slider:hover {
+/* #slider-container > #slider:hover {
   opacity: 1;
-}
+} */
 
 #slider-container > #slider::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -153,7 +159,8 @@ button:active {
   flex-wrap: wrap;
   background-color: rgb(231, 231, 231);
   box-shadow: 0px 80px 70px rgba(0, 0, 0, 20%);
-  border-image: linear-gradient(rgb(255, 174, 0), rgb(214, 96, 0)) 1;
+  border-image: linear-gradient(rgb(255, 174, 0), rgb(255, 133, 0)) 1;
+  margin-bottom: 12px;
 }
 
 .active:hover {
