@@ -1,28 +1,59 @@
 const gridContainer = document.getElementById("grid-container");
 const button = document.getElementById("button");
 const buttonReset = document.getElementById("button-reset");
+const buttonGridResize = document.getElementById("button-grid-resize");
 const slider = document.getElementById("slider");
-const sliderValue = document.getElementById("slider-value");
+const sliderValue = document.getElementsByClassName("slider-value");
+let inputValue = document.getElementById("input-value");
+let currentGridSize = document.getElementById("current-grid-size");
+let inputGridSize = document.getElementById("input-grid-size");
 let gridContainerStyle = getComputedStyle(gridContainer);
 let gridWidth = parseInt(gridContainerStyle.width.replace(/\D/g, ""));
 let squaresPerLine = 50;
 // let count = 0;
+currentGridSize.innerText = inputGridSize.value + " x " + inputGridSize.value;
+inputValue.innerText = " x " + inputGridSize.value;
 
-sliderValue.innerText = slider.value + " x " + slider.value;
-function changeSliderText() {
-  sliderValue.innerText = slider.value + " x " + slider.value;
-};
+inputGridSize.addEventListener("input", inputGridSizeField);
+function inputGridSizeField(e) {
+  console.log(e.target.value);
+  e.target.value = e.target.value.slice(0,2);
+  if (e.target.value < 20) {
+    inputValue.innerText = " x " + 20;
+  }
+  else if (e.target.value > 80) {
+    inputValue.innerText = " x " + 80;
+  }
+  else {
+    inputValue.innerText = " x " + e.target.value;
+  }
+}
 
-slider.addEventListener("input", changeSliderText);
-slider.addEventListener("mouseup", changeGridSizeSlider);
-slider.addEventListener("keyup", changeGridSizeSlider);
+// for (let i in sliderValue) {
+//   sliderValue[i].innerText = " x " + slider.value;
+// }
+// sliderValue.innerText = slider.value + " x " + slider.value;
+// function changeSliderText() {
+  // sliderValue.innerText = slider.value + " x " + slider.value;
+//   for (let i in sliderValue) {
+//     sliderValue[i].innerText = slider.value + " x " + slider.value;
+//   }
+// };
 
-function changeGridSizeSlider() {
-  let value = parseInt(slider.value);
+// slider.addEventListener("input", changeSliderText);
+// slider.addEventListener("mouseup", changeGridSizeSlider);
+// slider.addEventListener("keyup", changeGridSizeSlider);
+buttonGridResize.addEventListener("click", changeGridSize);
+
+function changeGridSize() {
+  // let value = parseInt(slider.value);
+  let value = parseInt(inputGridSize.value);
   if (value !== squaresPerLine) {
     removeAllChildNodes(gridContainer);
     squareSetup(value);
   }
+  // currentGridSize.innerText = slider.value + " x " + slider.value;
+  currentGridSize.innerText = inputGridSize.value + " x " + inputGridSize.value;
 };
 
 // Change number of squares per line based on user input
