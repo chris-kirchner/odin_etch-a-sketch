@@ -42,14 +42,9 @@ body {
   top: 0;
   left: 0;
   z-index: -1;
-  text-shadow: 
-    0px 1px rgb(177, 115, 0),
-    0px 2px rgb(177, 115, 0),
-    0px 3px rgb(177, 115, 0),
-    0px 4px rgb(177, 115, 0),
-    0px 5px rgb(177, 115, 0),
-    0px 6px rgb(177, 115, 0),
-    0px 7px rgb(177, 115, 0),
+  text-shadow:
+    0px 5px rgb(189, 123, 0),
+    0px 12px rgb(189, 123, 0),
     0px 50px 40px rgba(0, 0, 0, 30%);
 }
 
@@ -79,7 +74,6 @@ body {
 
 button {
   padding: 20px;
-  margin-bottom: 20px;
   /* border-radius: 10px; */
   /* border: 1px solid rgb(172, 92, 0); */
   border: none;
@@ -104,9 +98,9 @@ button:active {
 }
 
 #slider-container {
-  width: 40%;
+  width: 50%;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 #slider-container > #slider {
@@ -169,4 +163,17 @@ button:active {
 
 .active {
   transition: background-color 1.3s;
+}
+
+
+#input-container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+#input-container > input {
+  position: absolute;
+  left: 58%;
 }
