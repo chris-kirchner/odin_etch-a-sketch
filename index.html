@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="./style.css">
   <script src="./script.js" defer></script>
-  <title>Etch-A-Sketch</title>
+  <title>Pixel Pad</title>
 </head>
 <body>
   <div id="title-container">
@@ -12,9 +12,15 @@
     <p>Etch-A-Sketch inspired digital sketchpad</p>
   </div>
   <div id="body-container">
-    <div id="slider-container">
+    <p>Current grid size: <span id="current-grid-size"></span></p>
+    <!-- <div id="slider-container">
+      <p>Grid size:</p>
+      <p class="slider-value"></p>
       <input class="slider" id="slider" type="range" min="20" max="80" value="50">
-      <p>Grid size: <span id="slider-value"></span></p>
+    </div> -->
+    <div id="input-container">
+      <button id="button-grid-resize">Change grid to &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span id="input-value"></span></button>
+      <input id="input-grid-size" type="number" min="20" max="80" value="50"></input>
     </div>
     <div id="grid-container"></div>
     <div id="button-container">
