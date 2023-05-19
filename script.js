@@ -16,7 +16,7 @@ inputValue.innerText = " x " + inputGridSize.value;
 
 inputGridSize.addEventListener("input", inputGridSizeField);
 function inputGridSizeField(e) {
-  console.log(e.target.value);
+  // console.log(e.target.value);
   e.target.value = e.target.value.slice(0,2);
   if (e.target.value < 20) {
     inputValue.innerText = " x " + 20;
@@ -48,12 +48,23 @@ buttonGridResize.addEventListener("click", changeGridSize);
 function changeGridSize() {
   // let value = parseInt(slider.value);
   let value = parseInt(inputGridSize.value);
-  if (value !== squaresPerLine) {
+  if (value !== squaresPerLine && value >= 20 && value <= 80) {
     removeAllChildNodes(gridContainer);
     squareSetup(value);
   }
-  // currentGridSize.innerText = slider.value + " x " + slider.value;
+  else if (value < 20) {
+    removeAllChildNodes(gridContainer);
+    squareSetup(20);
+    inputGridSize.value = 20;
+  }
+  else if (value > 80) {
+    removeAllChildNodes(gridContainer);
+    squareSetup(80);
+    inputGridSize.value = 80;
+  }
   currentGridSize.innerText = inputGridSize.value + " x " + inputGridSize.value;
+  // currentGridSize.innerText = slider.value + " x " + slider.value;
+  
 };
 
 // Change number of squares per line based on user input
