@@ -68,8 +68,50 @@ body {
 
 #button-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   width: 610px;
+  gap: 15px;
+}
+
+#input-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+#input-container > #button-grid-resize {
+  text-align: center;
+  width: 100%;
+}
+
+#input-container > input {
+  position: absolute;
+  padding: 0;
+  border: 0;
+  height: 40px;
+  left: 175px;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(97, 97, 97);
+}
+
+#input-container > input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  /* opacity: 1; */
+}
+
+#input-container > input:focus {
+  border: none;
+}
+
+#button-container > #button-reset {
+  width: 50%;
 }
 
 button {
@@ -81,7 +123,8 @@ button {
   /* box-shadow: 0px 5px rgb(134, 72, 0); */
   transition: background-color 0.5s;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 600;
+  letter-spacing: .01rem;
   color: rgb(255, 255, 255);
   text-shadow: 0px 2px 5px rgb(92, 55, 0);
 }
@@ -163,17 +206,4 @@ button:active {
 
 .active {
   transition: background-color 1.3s;
-}
-
-
-#input-container {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-}
-
-#input-container > input {
-  position: absolute;
-  left: 58%;
 }
