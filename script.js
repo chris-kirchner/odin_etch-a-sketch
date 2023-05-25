@@ -4,7 +4,7 @@ const buttonReset = document.getElementById("button-reset");
 const buttonGridResize = document.getElementById("button-grid-resize");
 const slider = document.getElementById("slider");
 const sliderValue = document.getElementsByClassName("slider-value");
-let inputContainer = document.getElementById("input-container");
+let buttonContainer = document.getElementsByClassName("button-container");
 let buttonBevelContainer = document.getElementById("button-bevel-container");
 // let btnBevel1 = document.getElementsByClassName("btn-bevel1");
 // let btnBevel2 = document.getElementsByClassName("btn-bevel2");
@@ -16,13 +16,16 @@ let gridWidth = parseInt(gridContainerStyle.width.replace(/\D/g, ""));
 let squaresPerLine = 50;
 // let count = 0;
 
-inputContainer.addEventListener("mouseenter", buttonHighlight);
-inputContainer.addEventListener("mouseleave", buttonFade);
-function buttonHighlight() {
-  inputContainer.className = "btn-hover btn-bevel-highlight";
+for (let i = 0; i < buttonContainer.length; i++) {
+  // console.log(buttonContainer);
+  buttonContainer[i].addEventListener("mouseenter", buttonHighlight);
+  buttonContainer[i].addEventListener("mouseleave", buttonFade);
+}
+function buttonHighlight(e) {
+  e.target.className = "button-container btn-hover btn-bevel-highlight";
 };
-function buttonFade() {
-  inputContainer.className = "";
+function buttonFade(e) {
+  e.target.className = "button-container";
 }
 
 currentGridSize.innerText = inputGridSize.value + " x " + inputGridSize.value;
