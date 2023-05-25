@@ -29,19 +29,26 @@
     <p>Current grid size: <span id="current-grid-size"></span></p>
     <div id="grid-container"></div>
     <div id="button-container">
-      <!-- <button id="button">Change grid dimensions</button> -->
-      <div id="input-container">
-        <div id="button-face-container">
+      <div class="button-container">
+        <div class="button-face-container">
           <button id="button-grid-resize" class="btn">Change grid to&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span id="input-value"></span></button>
           <input id="input-grid-size" type="number" min="20" max="80" value="50"></input>
         </div>
-        <div id="button-bevel-container">
+        <div class="button-bevel-container">
           <button class="btn-bevel1"></button>
           <button class="btn-bevel2"></button>
         </div>
         
       </div>
-      <button id="button-reset" class="btn2">Erase and start over</button>
+      <div class="button-container">
+        <div class="button-face-container">
+          <button id="button-reset" class="btn">Erase and start over</button>
+        </div>
+        <div class="button-bevel-container">
+          <button class="btn-bevel1"></button>
+          <button class="btn-bevel2"></button>
+        </div>
+      </div>
     </div>
   </div>
 
