@@ -7,7 +7,42 @@ html {
 
 body {
   height: 100%;
-  background-image: radial-gradient(rgb(209, 192, 166), rgb(77, 72, 63));
+  /* background-image: radial-gradient(rgb(209, 192, 166), rgb(77, 72, 63)); */
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-image: radial-gradient(rgb(255, 227, 178), rgb(87, 73, 60));
+  /* background-image: radial-gradient(rgb(71, 172, 202) 50%, rgb(0, 80, 126)); */
+  /* background-color: rgb(165, 71, 42); */
+  overflow: hidden;
+}
+
+#bg-container {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+.bg-square {
+  background: rgb(255, 240, 218);
+  float: left;
+  opacity: 0;
+  animation: blink 5s infinite;
+}
+
+@keyframes blink {
+  0%    {opacity: 0;}
+  25%   {opacity: 0;}
+  50%   {opacity: 0.05;}
+  100%  {opacity: 0;}
 }
 
 #header-container {
@@ -49,7 +84,7 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  z-index: -1;
+  /* z-index: -1; */
   transition: opacity 1.1s;
   opacity: 0;
 }
@@ -78,17 +113,22 @@ body {
   /* color: rgb(229 118 0); */
   text-shadow: 0px 60px 60px rgba(0, 0, 0, 40%);
   top: 13px;
-  z-index: -2;
+  /* z-index: -1; */
 }
 
 #title-container {
-  transition: transform 0.7s ease-in;
+  transition: transform 0.7s ease-in-out;
 }
 
 #title-container:hover {
-  cursor: default;
+  cursor: pointer;
   transform: scale(1.02);
-  transition: transform 0.7s ease-out;
+  transition: transform 0.5s ease-out;
+}
+
+#title-container:active {
+  transform: scale(1.007);
+  transition: transform 0.3s ease-in-out;
 }
 
 #tagline-container {
@@ -179,7 +219,7 @@ button {
   font-weight: 900;
   letter-spacing: .05rem;
   color: rgb(255, 255, 255);
-  text-shadow: 0px 2px 5px rgb(92, 55, 0);
+  text-shadow: 0px 3px rgb(150, 85, 0), 0px 2px 5px rgb(92, 55, 0);
 }
 
 button:hover, .btn:hover::after {
@@ -297,14 +337,31 @@ button:hover, .btn:hover::after {
   background-color: rgb(231, 231, 231);
   box-shadow: 0px 80px 70px rgba(0, 0, 0, 20%);
   border-image: linear-gradient(rgb(255, 174, 0), rgb(255, 133, 0)) 1;
-  margin-bottom: 25px;
+  /* margin-bottom: 25px; */
   z-index: 0;
 }
 
-/* .active:hover {
+.active:hover {
   transition: background-color .05s;
 }
 
 .active {
   transition: background-color 1.3s;
-} */
+}
+
+#current-grid-size-text {
+  display: flex;
+  justify-content: center;
+  width: 610px;
+  margin: 0;
+  margin-bottom: 30px;
+  padding: 5px 0px 8px 0px;
+  background-color: rgb(255, 133, 0);
+  z-index: 1;
+  gap: 4px;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: .1rem;
+  color: rgb(255, 255, 255);
+  text-shadow: 0px 2px rgb(150, 85, 0), 0px 2px 5px rgb(92, 55, 0);
+}
