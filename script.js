@@ -1,4 +1,6 @@
 const gridContainer = document.getElementById("grid-container");
+const bgContainer = document.getElementById("bg-container");
+let bgSquare = document.getElementsByClassName("bg-square");
 const button = document.getElementById("button");
 const buttonReset = document.getElementById("button-reset");
 const buttonGridResize = document.getElementById("button-grid-resize");
@@ -15,6 +17,8 @@ let gridContainerStyle = getComputedStyle(gridContainer);
 let gridWidth = parseInt(gridContainerStyle.width.replace(/\D/g, ""));
 let squaresPerLine = 50;
 // let count = 0;
+
+
 
 for (let i = 0; i < buttonContainer.length; i++) {
   // console.log(buttonContainer);
@@ -105,7 +109,6 @@ function gridReset() {
 };
 
 // button.addEventListener("click", changeLineCount);
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!
 buttonReset.addEventListener("click", gridReset);
 
 // Removes all children of a parent container
@@ -154,20 +157,46 @@ function squareEvent() {
       else {
         let colorChange = 25;
         let numRegex = /\d+/g;
-        let rgbArr = bgColor.match(numRegex);
-        for (let i = 0; i < rgbArr.length; i++) {
-          parseInt(rgbArr[i]);
-          if ((rgbArr[i] - colorChange) >= 0) {
-            rgbArr[i] -= colorChange;
+        let rgbArray = bgColor.match(numRegex);
+        for (let i = 0; i < rgbArray.length; i++) {
+          parseInt(rgbArray[i]);
+          if ((rgbArray[i] - colorChange) >= 0) {
+            rgbArray[i] -= colorChange;
           }
           else {
-            rgbArr[i] = 0;
+            rgbArray[i] = 0;
           }
         }
-        square.style.backgroundColor = "rgb(" + rgbArr[0] + ", " + rgbArr[1] + ", " + rgbArr[2] + ")";
+        square.style.backgroundColor = "rgb(" + rgbArray[0] + ", " + rgbArray[1] + ", " + rgbArray[2] + ")";
       }
     });
   });
 };
 
-squareSetup(squaresPerLine);
+function bgSquareSetup(num) {
+  squaresPerLine = parseInt(num);
+  const containerSize = window.innerWidth / num;
+  for (let i = 0; i < num; i++) {
+    for (let j = 0; j < num; j++) {
+      // count ++;
+      const square = document.createElement("div");
+      square.className += "bg-square";
+      square.style.height = containerSize + "px";
+      square.style.width = containerSize + "px";
+      bgContainer.appendChild(square);
+      // square.innerText = count;
+      // square.style.fontSize = "8px";
+      // square.style.textAlign = "center";
+    }
+  }
+
+  for (let i = 0; i < bgSquare.length; i++) {
+    bgSquare[i].style.animationDelay = Math.ceil(Math.random() * 50000) + "ms";
+  }
+
+  squareSetup(50);
+  // squareEvent();
+};
+
+squareSetup(50);
+// bgSquareSetup(30);
