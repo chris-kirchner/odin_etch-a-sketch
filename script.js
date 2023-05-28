@@ -191,12 +191,13 @@ function bgSquareSetup(num) {
   }
 
   for (let i = 0; i < bgSquare.length; i++) {
-    bgSquare[i].style.animationDelay = Math.ceil(Math.random() * 50000) + "ms";
+    // bgSquare[i].style.animationDelay = Math.ceil(Math.random() * 100) + "s";
+    bgSquare[i].style.opacity = Math.round(Math.random() * 10) / 10;
   }
 
   squareSetup(50);
   // squareEvent();
 };
 
-squareSetup(50);
-// bgSquareSetup(30);
+// squareSetup(50);
+bgSquareSetup(80);
