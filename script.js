@@ -8,20 +8,15 @@ const slider = document.getElementById("slider");
 const sliderValue = document.getElementsByClassName("slider-value");
 let buttonContainer = document.getElementsByClassName("button-container");
 let buttonBevelContainer = document.getElementById("button-bevel-container");
-// let btnBevel1 = document.getElementsByClassName("btn-bevel1");
-// let btnBevel2 = document.getElementsByClassName("btn-bevel2");
 let inputValue = document.getElementById("input-value");
 let currentGridSize = document.getElementById("current-grid-size");
 let inputGridSize = document.getElementById("input-grid-size");
 let gridContainerStyle = getComputedStyle(gridContainer);
 let gridWidth = parseInt(gridContainerStyle.width.replace(/\D/g, ""));
 let squaresPerLine = 50;
-// let count = 0;
 
-
-
+/* Event handlers for changing button color on enter and leave */
 for (let i = 0; i < buttonContainer.length; i++) {
-  // console.log(buttonContainer);
   buttonContainer[i].addEventListener("mouseenter", buttonHighlight);
   buttonContainer[i].addEventListener("mouseleave", buttonFade);
 }
@@ -32,12 +27,20 @@ function buttonFade(e) {
   e.target.className = "button-container";
 }
 
+/* Takes values and formats them for display in the 
+#current-grid-size html <span> element */
 currentGridSize.innerText = inputGridSize.value + " x " + inputGridSize.value;
+
+/* Changes the string value on the grid size change button 
+to the right of the user input field */
 inputValue.innerText = " x " + inputGridSize.value;
 
+/* Event listener for the user input field*/
 inputGridSize.addEventListener("input", inputGridSizeField);
+
+/* Limits the user input field to 2 characters (which is restricted to numbers only via html),
+checks and enforces a minimum input value of 20 and maximum of 80 */
 function inputGridSizeField(e) {
-  // console.log(e.target.value);
   e.target.value = e.target.value.slice(0,2);
   if (e.target.value < 20) {
     inputValue.innerText = " x " + 20;
@@ -50,24 +53,12 @@ function inputGridSizeField(e) {
   }
 }
 
-// for (let i in sliderValue) {
-//   sliderValue[i].innerText = " x " + slider.value;
-// }
-// sliderValue.innerText = slider.value + " x " + slider.value;
-// function changeSliderText() {
-  // sliderValue.innerText = slider.value + " x " + slider.value;
-//   for (let i in sliderValue) {
-//     sliderValue[i].innerText = slider.value + " x " + slider.value;
-//   }
-// };
-
-// slider.addEventListener("input", changeSliderText);
-// slider.addEventListener("mouseup", changeGridSizeSlider);
-// slider.addEventListener("keyup", changeGridSizeSlider);
+/* Click event listener for the grid size change button */
 buttonGridResize.addEventListener("click", changeGridSize);
 
+/* Sets up a new grid based on the value in the user input field
+as long as it is not the same value as previously entered. */
 function changeGridSize() {
-  // let value = parseInt(slider.value);
   let value = parseInt(inputGridSize.value);
   if (value !== squaresPerLine && value >= 20 && value <= 80) {
     removeAllChildNodes(gridContainer);
@@ -84,32 +75,17 @@ function changeGridSize() {
     inputGridSize.value = 80;
   }
   currentGridSize.innerText = inputGridSize.value + " x " + inputGridSize.value;
-  // currentGridSize.innerText = slider.value + " x " + slider.value;
-  
 };
 
-// Change number of squares per line based on user input
-// function changeLineCount() {
-//   let lineCount = prompt("Number of squares per line (1 - 100):", "");
-//   if (lineCount > 0 && lineCount < 101) {
-//     removeAllChildNodes(gridContainer);
-//     // count = 0;
-//     squareSetup(lineCount);
-//   }
-//   else {
-//     changeLineCount();
-//   }
-// };
+// Click event listener for the "erase and start over" button
+buttonReset.addEventListener("click", gridReset);
 
-/* Removes all squares then sets up the same number of squares per line
-giving the effect of "erasing" the board */
+/* Removes all child nodes of gridContainer then sets up the same
+number of squares per line giving the effect of "erasing" the grid */
 function gridReset() {
   removeAllChildNodes(gridContainer);
   squareSetup(squaresPerLine);
 };
-
-// button.addEventListener("click", changeLineCount);
-buttonReset.addEventListener("click", gridReset);
 
 // Removes all children of a parent container
 function removeAllChildNodes(parent) {
@@ -119,21 +95,17 @@ function removeAllChildNodes(parent) {
 };
 
 /* Populates gridContainer with squares that scale to fit within
-the max width of the container */
+the max width of the gridContainer */
 function squareSetup(lineCount) {
   squaresPerLine = parseInt(lineCount);
   const containerSize = gridWidth / lineCount;
   for (let i = 0; i < lineCount; i++) {
     for (let j = 0; j < lineCount; j++) {
-      // count ++;
       const square = document.createElement("div");
       square.className += "square";
       square.style.height = containerSize + "px";
       square.style.width = containerSize + "px";
       gridContainer.appendChild(square);
-      // square.innerText = count;
-      // square.style.fontSize = "8px";
-      // square.style.textAlign = "center";
     }
   }
   squareEvent();
@@ -173,31 +145,24 @@ function squareEvent() {
   });
 };
 
+/* Setup function for the background: creates squares and randomizes
+opacity values for each square, then calls squareSetup() function */
 function bgSquareSetup(num) {
   squaresPerLine = parseInt(num);
   const containerSize = window.innerWidth / num;
   for (let i = 0; i < num; i++) {
     for (let j = 0; j < num; j++) {
-      // count ++;
       const square = document.createElement("div");
       square.className += "bg-square";
       square.style.height = containerSize + "px";
       square.style.width = containerSize + "px";
       bgContainer.appendChild(square);
-      // square.innerText = count;
-      // square.style.fontSize = "8px";
-      // square.style.textAlign = "center";
     }
   }
-
   for (let i = 0; i < bgSquare.length; i++) {
-    // bgSquare[i].style.animationDelay = Math.ceil(Math.random() * 100) + "s";
     bgSquare[i].style.opacity = Math.round(Math.random() * 10) / 10;
   }
-
   squareSetup(50);
-  // squareEvent();
 };
 
-// squareSetup(50);
-bgSquareSetup(80);
+bgSquareSetup(85);
