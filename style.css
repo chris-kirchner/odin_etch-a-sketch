@@ -148,16 +148,16 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.4s ease-in-out;
+  transition: transform 0.4s ease-out;
 }
 
 .button-container:hover {
-  transition: transform 0.4s ease-out;
+  transition: transform 0.4s;
   transform: scale(1.02);
 }
 
 .button-container:active {
-  transition: transform 0.2s;
+  transition: transform 0.15s;
   transform: scale(1.0);
 }
 
@@ -167,26 +167,40 @@ html, body {
   justify-content: center;
 }
 
-.button-container > .button-face-container > input {
+.button-container-main {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 621px;
+  z-index: 0;
+  transition: transform 0.4s;
+  transform: scale(1.0);
+}
+
+input {
   position: absolute;
-  padding: 0;
+  padding: 0px;
   border: none;
   height: 40px;
-  left: 175px;
+  left: 177px;
   text-align: center;
   font-family: "Roboto", sans-serif;
   font-size: 20px;
   font-weight: 900;
+  letter-spacing: .05rem;
   color: rgb(100, 100, 100);
+  z-index: 1;
 }
 
-.button-container > .button-face-container > input::-webkit-inner-spin-button {
+input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
 button {
   font-family: "Roboto", sans-serif;
-  padding: 20px;
+  padding: 20px 25px;
   border: none;
   background-color: rgb(255, 133, 0);
   transition: background-color 0.5s;
@@ -194,7 +208,12 @@ button {
   font-weight: 900;
   letter-spacing: .05rem;
   color: rgb(255, 255, 255);
-  text-shadow: 0px 3px rgb(150, 85, 0), 0px 2px 5px rgb(92, 55, 0);
+  text-shadow: 
+    0px 1px rgb(150, 85, 0),
+    0px 2px rgb(150, 85, 0),
+    0px 3px rgb(150, 85, 0),
+    0px 4px rgb(150, 85, 0),
+    0px 2px 5px rgb(92, 55, 0);
 }
 
 button:hover, .btn:hover::after {
@@ -278,10 +297,24 @@ button:hover, .btn:hover::after {
   z-index: 1;
   gap: 4px;
   font-size: 16px;
-  font-weight: 900;
+  font-weight: 500;
   letter-spacing: .1rem;
   color: rgb(255, 255, 255);
-  text-shadow: 0px 2px rgb(150, 85, 0),  0px 3px rgb(150, 85, 0), 0px 2px 5px rgb(92, 55, 0);
+  text-shadow:
+    0px 1px rgb(150, 85, 0),
+    0px 2px rgb(150, 85, 0),
+    0px 3px rgb(150, 85, 0),
+    0px 2px 5px rgb(92, 55, 0);
+}
+
+#current-grid-size {
+  font-weight: 900;
+  transition: color 2s;
+}
+
+#current-grid-size.text-highlight {
+  color: rgb(255, 227, 65);
+  transition: color 0.01s;
 }
 
 .active:hover {
