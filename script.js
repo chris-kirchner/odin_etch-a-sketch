@@ -11,6 +11,7 @@ let buttonBevelContainer = document.getElementById("button-bevel-container");
 let inputValue = document.getElementById("input-value");
 let currentGridSize = document.getElementById("current-grid-size");
 let inputGridSize = document.getElementById("input-grid-size");
+let currentGridSizeText = document.getElementById("current-grid-size-text");
 let gridContainerStyle = getComputedStyle(gridContainer);
 let gridWidth = parseInt(gridContainerStyle.width.replace(/\D/g, ""));
 let squaresPerLine = 50;
@@ -19,13 +20,58 @@ let squaresPerLine = 50;
 for (let i = 0; i < buttonContainer.length; i++) {
   buttonContainer[i].addEventListener("mouseenter", buttonHighlight);
   buttonContainer[i].addEventListener("mouseleave", buttonFade);
-}
+};
+
+buttonContainer[0].addEventListener("mouseenter", inputScaleMouseEnter);
+buttonContainer[0].addEventListener("mouseleave", inputScaleMouseLeave);
+buttonContainer[0].addEventListener("mouseup", inputScaleMouseUp);
+buttonContainer[0].addEventListener("mousedown", inputScaleMouseDown);
+inputGridSize.addEventListener("mouseenter", inputMouseEnter);
+inputGridSize.addEventListener("mouseleave", inputMouseLeave);
+
+function inputScaleMouseEnter() {
+  inputGridSize.style.transform = "scale(1.02)";
+  inputGridSize.style.transition = "transform 0.4s, left 0.3s";
+  inputGridSize.style.left = "178.6px";
+};
+
+function inputScaleMouseLeave() {
+  inputGridSize.style.transform = "scale(1.0)";
+  inputGridSize.style.transition = "transform 0.4s ease-out, left 0.3s ease-out";
+  inputGridSize.style.left = "177px";
+};
+
+function inputScaleMouseUp() {
+  inputGridSize.style.transform = "scale(1.02)";
+  inputGridSize.style.transition = "transform 0.3s, left 0.2s";
+  inputGridSize.style.left = "178.3px";
+};
+
+function inputScaleMouseDown() {
+  inputGridSize.style.transform = "scale(1.0)";
+  inputGridSize.style.left = "177px";
+  inputGridSize.style.transition = "transform 0.15s, left 0.15s";
+};
+
+function inputMouseEnter() {
+  inputGridSize.style.transform = "scale(1.02)";
+  inputGridSize.style.left = "178.3px";
+  buttonContainer[0].style.transform = "scale(1.02)";
+};
+
+function inputMouseLeave() {
+  buttonContainer[0].style.transform = "";
+};
+
+/* Adds a hover and highlight class to trigger color change in css */
 function buttonHighlight(e) {
   e.target.className = "button-container btn-hover btn-bevel-highlight";
 };
+
+/* Removes hover and highlight class to trigger color change in css */
 function buttonFade(e) {
   e.target.className = "button-container";
-}
+};
 
 /* Takes values and formats them for display in the 
 #current-grid-size html <span> element */
@@ -37,6 +83,11 @@ inputValue.innerText = " x " + inputGridSize.value;
 
 /* Event listener for the user input field*/
 inputGridSize.addEventListener("input", inputGridSizeField);
+inputGridSize.addEventListener("mouseenter", buttonHighlight2);
+
+function buttonHighlight2() {
+  buttonContainer[0].className = "button-container btn-hover btn-bevel-highlight";
+};
 
 /* Limits the user input field to 2 characters (which is restricted to numbers only via html),
 checks and enforces a minimum input value of 20 and maximum of 80 */
@@ -51,7 +102,7 @@ function inputGridSizeField(e) {
   else {
     inputValue.innerText = " x " + e.target.value;
   }
-}
+};
 
 /* Click event listener for the grid size change button */
 buttonGridResize.addEventListener("click", changeGridSize);
@@ -61,6 +112,7 @@ as long as it is not the same value as previously entered. */
 function changeGridSize() {
   let value = parseInt(inputGridSize.value);
   if (value !== squaresPerLine && value >= 20 && value <= 80) {
+    currentGridSizeHighlight();
     removeAllChildNodes(gridContainer);
     squareSetup(value);
   }
@@ -76,6 +128,15 @@ function changeGridSize() {
   }
   currentGridSize.innerText = inputGridSize.value + " x " + inputGridSize.value;
 };
+
+function currentGridSizeHighlight() {
+  currentGridSize.className = "text-highlight";
+  setTimeout(currentGridSizeFade, 500);
+}
+
+function currentGridSizeFade() {
+  currentGridSize.className = "";
+}
 
 // Click event listener for the "erase and start over" button
 buttonReset.addEventListener("click", gridReset);
@@ -165,4 +226,4 @@ function bgSquareSetup(num) {
   squareSetup(50);
 };
 
-bgSquareSetup(85);
+bgSquareSetup(46);
