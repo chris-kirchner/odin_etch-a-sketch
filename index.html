@@ -27,23 +27,26 @@
     <div id="grid-container"></div>
     <p id="current-grid-size-text">Current grid size: <span id="current-grid-size"></span></p>
     <div id="button-container">
-      <div class="button-container">
-        <div class="button-face-container">
-          <button id="button-grid-resize" class="btn">Change grid to&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span id="input-value"></span></button>
-          <input id="input-grid-size" type="number" min="20" max="80" value="50"></input>
+      <div class="button-container-main">
+        <div class="button-container">
+          <div class="button-face-container">
+            <button id="button-grid-resize" class="btn">Change grid to&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span id="input-value"></span></button>
+            <!-- <input id="input-grid-size" type="number" min="20" max="80" value="50"></input> -->
+          </div>
+          <div class="button-bevel-container">
+            <button class="btn-bevel1"></button>
+            <button class="btn-bevel2"></button>
+          </div>
         </div>
-        <div class="button-bevel-container">
-          <button class="btn-bevel1"></button>
-          <button class="btn-bevel2"></button>
-        </div>
-      </div>
-      <div class="button-container">
-        <div class="button-face-container">
-          <button id="button-reset" class="btn">Erase and start over</button>
-        </div>
-        <div class="button-bevel-container">
-          <button class="btn-bevel1"></button>
-          <button class="btn-bevel2"></button>
+        <input id="input-grid-size" type="number" min="20" max="80" value="50"></input>
+        <div class="button-container">
+          <div class="button-face-container">
+            <button id="button-reset" class="btn">Erase and start over</button>
+          </div>
+          <div class="button-bevel-container">
+            <button class="btn-bevel1"></button>
+            <button class="btn-bevel2"></button>
+          </div>
         </div>
       </div>
     </div>
